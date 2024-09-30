@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:ffmpeg_helper/ffmpeg_helper.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
