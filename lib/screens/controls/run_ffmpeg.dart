@@ -30,7 +30,7 @@ class FFMPegRunManager {
     final maxSize = options.maxSizeInMB * 1024 * 1024;
 
     final bitrate = (((maxSize * 8) / (endTime - startTime)) - (128000 * 2)) *
-        0.98; // subtract audio bitrate
+        0.95; // subtract audio bitrate
 
     final firstPassCmd = CustomArgument([
       '-b:v',
@@ -107,7 +107,7 @@ class FFMPegRunManager {
 
       return FFMpegCommand(
         args: [
-          const CustomArgument(["-c:a", "aac", "-b:a", "128k"]),
+          const CustomArgument(["-c:a", "aac", "-b:a", "128k", "-ar", "48000", "-ac", "2"]),
           useTwoPassCommand,
           useEncodingDevice,
           const OverwriteArgument(),
@@ -137,6 +137,7 @@ class FFMPegRunManager {
 
     if (options.isTwopass) {
       File? filePath;
+
       session = await ffmpeg.runAsync(await buildCommand(),
           statisticsCallback: (stats) => {
                 callbackStats(stats, isFirstPass: true),

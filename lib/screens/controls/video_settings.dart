@@ -68,9 +68,10 @@ class _VideoSettingsState extends State<VideoSettings>
   }
 
   callbackStats(Statistics stats, {bool? isFirstPass}) {
-    final total = isFirstPass != null
-        ? videoDuration
-        : _currentRangeValues.end - _currentRangeValues.start;
+    // final total = isFirstPass != null
+    //     ? videoDuration
+    //     : _currentRangeValues.end - _currentRangeValues.start;
+    final total = _currentRangeValues.end - _currentRangeValues.start;
     popup?.updateProgress(stats, total);
   }
 
@@ -127,14 +128,16 @@ class _VideoSettingsState extends State<VideoSettings>
             ElevatedButton(
               onPressed: () async {
                 String? outputFile;
-                while (outputFile == null) {
-                  outputFile = await FilePicker.platform.saveFile(
+                outputFile = await FilePicker.platform.saveFile(
                     dialogTitle: 'Choose location to save',
                     allowedExtensions: ['mp4'],
                     type: FileType.custom,
                     lockParentWindow: true,
                     fileName: 'video.mp4',
                   );
+
+                if (outputFile == null) {
+                  return;
                 }
 
                 final manager = FFMPegRunManager();

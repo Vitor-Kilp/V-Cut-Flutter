@@ -81,7 +81,7 @@ class ProgressPopup {
                       children: [
                         Expanded(
                           child: LinearProgressIndicator(
-                            minHeight: 4,
+                            minHeight: 8,
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(4)),
                             value: progress,

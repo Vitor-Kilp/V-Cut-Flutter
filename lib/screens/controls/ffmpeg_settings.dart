@@ -126,7 +126,7 @@ class _FfmpegSettingsState extends State<FfmpegSettings> {
               Tooltip(
                 waitDuration: Duration(milliseconds: 500),
                 message:
-                    "Slower, two pass method, but keeps the file size close \n to the selected value. Ignores CRF.",
+                    "Slower two pass method, but keeps the file size close \n to the selected value. Ignores CRF.",
                 child: ToggleButtons(
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   isSelected: [widget.optionsStream.lastUpdate.isTwopass],
